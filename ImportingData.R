@@ -317,3 +317,32 @@ sapply(sprCount, sum)
 
 # We can use the plyr functions too
 ddply(InsectSprays, .(spray), summarize, sum=sum(count))
+
+
+##EDITING VARIABLES
+rm(list = ls())
+cameraData <- read.csv("./data/camera.csv", header = TRUE)
+tolower(names(cameraData))
+#Location.1 has a dot and capital letter, we have to remove it
+splitNames= strsplit(names(cameraData),"\\.")
+splitNames[[6]]
+
+myList <- list(letters= c("A","B","C"), numbers= 1:3, matrix(1:25, ncol = 5))
+myList
+
+firstElement <- function(x){x[1]}
+sapply(splitNames, firstElement)
+
+#Searching for specific values
+grep("Alameda",cameraData$intersection)
+
+grep("Alameda",cameraData$intersection, value = TRUE)
+table(grepl("Alameda",cameraData$intersection))
+
+cameraData2 <- cameraData[!grepl("Alameda", cameraData)]
+
+#String functions
+nchar("Jeffrey Leek")
+substr("Jeffrey Leek",1,7)
+paste("Jeffrey","Leek")
+ 
