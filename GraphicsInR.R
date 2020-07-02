@@ -110,3 +110,15 @@ qplot(displ, hwy, data = mpg, col= drv, geom = c("point","smooth"))
 qplot(hwy, data = mpg, fill=drv)
 
 ##Plotting facets (are similar to the panels in lattice)
+qplot(displ, hwy, data = mpg, col= drv, facets = .~drv)
+qplot(hwy, data = mpg, fill=drv, facets = drv~., binwidth=2)
+      
+##More of ggplot2()
+
+testdat <- data.frame(x= 1:100, y=rnorm(100))
+testdat[50,2] <- 100  #Outlier
+plot(testdat$x,testdat$y, type="l", ylim = c(-3,3) )
+
+
+g <- ggplot(testdat, aes(x=x, y=y))
+g+geom_line()
